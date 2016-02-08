@@ -1,0 +1,23 @@
+{
+  "name": "weather-dashboard",
+  "version": "1.0.0",
+  "description": "Weather Dashboard webApp, that help to display list of the user's weather widgets, and give the user the possibilty to Add or remove weather widgets",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elmasria/weather-dashboard.git"
+  },
+  "keywords": [
+    "weather",
+    "dashboard"
+  ],
+  "author": "Ahmad El Masri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elmasria/weather-dashboard/issues"
+  },
+  "homepage": "https://github.com/elmasria/weather-dashboard#readme"
+}
