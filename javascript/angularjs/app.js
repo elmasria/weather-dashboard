@@ -1,0 +1,1 @@
+angular.module('WeatherDashboard',['ngRoute', 'ngResource', 'ngAnimate']);

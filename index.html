@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Weather Dashboard</title>
+	<link rel="icon" href="/images/favicon/favicon.ico" type="image/gif" sizes="16x16">
+
+
+	<!-- vendors -->
+	<link rel="stylesheet" href="/vendors/bootstrap/css/bootstrap.min.css">
+
+	<!-- Styles -->
+	<link rel="stylesheet" href="/styles/app.css">
+
+	<!-- vendors -->
+	<script type="text/javascript" src="/vendors/jquery/jquery-2.2.0.min.js"></script>
+	
+	<script type="text/javascript" src="/vendors/bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+
+<body ng-app="WeatherDashboard">
+	<div class="navbar navbar-inverse navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#/home" class="navbar-brand">Weather Dashboard</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" 
+				data-target=".navbar-collapse">
+					<span class="sr-only">Toogle navigation</span> 
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+					<span class="icon-bar"> </span>
+				</button>
+			</div>
+			<ul class="nav navbar-nav navbar-right collapse navbar-collapse"> 
+				<li><a href="#/edit">Admin Configuration</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container">
+		<div ng-view></div>
+	</div>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="/javascript/app.js"></script>
+</body>
+
+</html>
