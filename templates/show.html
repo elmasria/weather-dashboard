@@ -1,1 +1,84 @@
-<h1>Show</h1>
+
+<div ng-controller="ShowWeatherController as sWCtrl">
+	<h1 ng-show="sWCtrl.showLoading">Fetching data....</h1>
+	<div class="row" ng-show="sWCtrl.showCurrentLocation">
+		<div class="col-sm-5 col-sm-offset-4 col-xs-10 col-xs-offset-1">
+			Current location: {{sWCtrl.currentLocation}} - Temperature: {{sWCtrl.currentTemperature | number:0}} &#8451;
+		</div>
+		<br>
+		<br>
+	</div>
+	<div class="alert alert-info" ng-show="sWCtrl.noData" role="alert">
+  <strong>Heads up!</strong> You have removed all the cities.
+</div>
+	<div class="row">
+		<div class="col-sm-4" ng-repeat="city in sWCtrl.cities track by city._id">
+			<div class="panel panel-primary">
+				<div class="panel-heading text-center">
+					<h3>{{city.name  | limitTo:12}} {{city.name.length >= 12 ? '...': ''}}<small>,{{city.country}}</small></h3>
+				</div>
+				<div class="panel-body">
+					<div class="col-sm-12 col-md-6">
+						<div class="row text-center">
+							Right now
+						</div>
+						<br>
+						<div class="row text-center">
+							<span class="">
+								<strong> {{city.temp | number:0}} &#8451;</strong>
+							</span>	
+						</div>
+						<br>
+					</div>
+					<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-4 col-xs-offset-4 col-xs-4">
+						<i class="{{city.icon}}"></i>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<h5 class="text-center">{{city.main}} | <a href="" data-toggle="modal" data-target="#weatherModal" ng-click="sWCtrl.moreDetail($event, city.index)">more details</a></h5>					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div id="weatherModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog modal-lg">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">{{sWCtrl.moreDetails.name}}, {{sWCtrl.moreDetails.country}}</h4>
+	      </div>
+	      <div class="modal-body">
+	      	 <h5 >{{sWCtrl.moreDetails.date.getDate()}}-{{sWCtrl.getMonth(sWCtrl.moreDetails.date.getMonth())}}
+	      -{{sWCtrl.moreDetails.date.getFullYear()}}
+	      at {{sWCtrl.moreDetails.date.getHours() < 10? '0' +sWCtrl.moreDetails.date.getHours(): sWCtrl.moreDetails.date.getHours()}}:{{sWCtrl.moreDetails.date.getMinutes() < 10? '0'  +sWCtrl.moreDetails.date.getMinutes() : sWCtrl.moreDetails.date.getMinutes()}}</h5>
+	      <i class="{{sWCtrl.moreDetails.icon}} pull-right"></i>
+	     
+	     <blockquote>
+	     <p>
+	     	Temperature: <span class="badge">{{sWCtrl.moreDetails.temp | number:0}} &#8451;</span><br>
+	     	Pressure: <span class="badge">{{sWCtrl.moreDetails.pressure}} hPa</span><br>
+	     	Humidity: <span class="badge">{{sWCtrl.moreDetails.humidity}}%</span><br>
+	     	Max Temperature: <span class="badge">{{sWCtrl.moreDetails.temp_max | number:0}} &#8451;</span><br>
+	     	Min Temperature: <span class="badge">{{sWCtrl.moreDetails.temp_min | number:0}} &#8451;</span><br>
+	     	Description: <span class="badge">{{sWCtrl.moreDetails.description}}</span><br>     	
+	     	Sunrise: <span class="badge">{{sWCtrl.moreDetails.sunrise.getHours() < 10? '0'+sWCtrl.moreDetails.sunrise.getHours():sWCtrl.moreDetails.sunrise.getHours()}}:{{sWCtrl.moreDetails.sunrise.getMinutes() < 10 ? '0'  +sWCtrl.moreDetails.sunrise.getMinutes(): sWCtrl.moreDetails.sunrise.getMinutes() }}</span><br>
+	     	Sunset: <span class="badge">{{sWCtrl.moreDetails.sunset.getHours() < 10? '0' +sWCtrl.moreDetails.sunset.getHours() : sWCtrl.moreDetails.sunset.getHours()}}:{{sWCtrl.moreDetails.sunset.getMinutes() < 10 ? '0'  +sWCtrl.moreDetails.sunset.getMinutes() : sWCtrl.moreDetails.sunset.getMinutes()}}</span><br>
+	     </p>
+	     </blockquote>
+	     <small class="smlModal">
+	      City id: {{sWCtrl.moreDetails.id}}
+	     </small>	
+
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+</div>

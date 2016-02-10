@@ -48,6 +48,8 @@ gulp.task('copy-html', function(){
 gulp.task('copy-images', function(){
 	gulp.src('images/**/*')
 	.pipe(gulp.dest('dist/images'));
+	gulp.src('javascript/app-data/city.list.json')
+	.pipe(gulp.dest('dist/javascript/app-data'));
 });
 
 gulp.task('styles', function () {
@@ -68,6 +70,8 @@ gulp.task('scripts-dist', function(){
 		'vendors/angular/angular-route.min.js',
 		'vendors/angular/angular-resource.min.js',
 		'vendors/angular/angular-animate.min.js',
+		'javascript/appConfiguration.json',
+		'javascript/app-data/icons.json',
 		'javascript/**/*.js'])
 	.pipe(sourcemap.init())
 	.pipe(concat('app.js'))

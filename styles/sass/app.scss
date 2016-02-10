@@ -1,3 +1,55 @@
-.test{
- background-color: blue;
+
+.wi {
+    font-size: 40px;
+    display: inline-block;
+    font-family: 'weathericons';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    min-width: 54px;
+    text-align: center;
+    color: #337ab7;
+ }
+ .sample-show-hide {
+}
+
+.sample-show-hide {
+  transition:all linear 0.5s;
+}
+.sample-show-hide.ng-show {
+  
+}
+small{
+    color: white !important; 
+}
+.inputCity {    
+
+    text-transform: capitalize;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+.smlModal{
+    color: #337ab7 !important;
+}
+.modal-header, .modal-footer{
+    background-color:#337ab7 ;
 }

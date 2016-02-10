@@ -1,0 +1,6 @@
+configurations = {
+	"dataBaseName": "WeatherDashboardDB",
+	"appid":"dc032ceba227b4075ee72f8293792366",
+	"siteURL":"http://api.openweathermap.org/data/2.5/",
+	"unit":"metric"
+}

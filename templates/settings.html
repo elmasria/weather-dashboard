@@ -1,1 +1,48 @@
-<h1>settings</h1>
+
+<div ng-controller="EditWeatherController as eWCtrl">
+<div class="alert sample-show-hide" ng-class="{'alert-success':eWCtrl.success, 'alert-warning':eWCtrl.warning}" ng-show="eWCtrl.showAlert" role="alert">
+  <strong>{{eWCtrl.alertMessageStrong}}</strong> {{eWCtrl.alertMessage}}
+</div>
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<div class="form-inline">
+				<div class="form-group">
+					<label for="txtCity">City</label>
+					<input  type="text" ng-minlength="5" class="form-control inputCity" required name="txtCity"  ng-model="eWCtrl.city" id="txtCity" placeholder="Grenoble">					
+				</div>
+
+				<button type="submit" ng-disabled="weatheDashboardForm.txtCity.$invalid" ng-click="eWCtrl.CheckCountry($event)" class="btn btn-primary">					
+					Check Location
+				</button> <h4 ng-show="eWCtrl.showLoading" class="label label-info"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...</h4>
+			</div>
+			<br>
+			<div class="col-sm-12" ng-show="eWCtrl.ShowExtraOptions">
+				<div class="radio  col-sm-6" ng-repeat="matchedCity in eWCtrl.matchedCities track by matchedCity._id">
+				    <label>
+				      <input type="radio"  name="extraCities" ng-model="eWCtrl.extraCities" required value="{{matchedCity.name}},{{matchedCity._id}},{{matchedCity.country}}">
+				      {{matchedCity.name}} , {{matchedCity.country}}
+				    </label>
+ 				</div>
+ 				<br>
+ 				<div class="col-sm-12">
+ 					<button type="submit" ng-disabled="weatheDashboardForm.extraCities.$error.required" ng-click="eWCtrl.addNewLocation($event)" class="btn btn-lg btn-primary">Add Location</button>
+ 					</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<table class="table table-hover">
+		<tr>
+			<th>ID</th>
+			<th>City</th>
+			<th>Country</th>
+			<th>	</th>
+		</tr>
+		<tr ng-repeat="city in eWCtrl.cities track by city._id">
+			<td>{{city._id}}</td>
+			<td>{{city.city}}</td>
+			<td><button type="button" class="btn btn-primary" ng-click="eWCtrl.removeLocation($event,city._id)">Remove</button></td>
+		</tr>
+
+	</table>
+</div>
