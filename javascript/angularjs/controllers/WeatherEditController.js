@@ -66,11 +66,18 @@ angular.module('WeatherDashboard').controller('EditWeatherController', function(
 		event.preventDefault();
 		controller.showLoading = true;
 		// get list of locations
-		$http.get('javascript/app-data/city.list.json')
-		.then(function(response) {	
-			// check if user input match a city in the cities list		
-			var CityFromResponse = $filter('filter')(response.data, controller.city );
-			if(CityFromResponse.length > 0){
+		$http.get(configurations.siteURL + 'find?q=' + controller.city + '&type=like&appid=' + configurations.appid)
+		.then(function(response){
+			// check if user input match a city in the cities list
+			if(response.data.count > 0){
+				var CityFromResponse = [];
+				for(var i = 0; i < response.data.count; i ++){
+					var newCity = {};
+					newCity.name = response.data.list[i].name;
+					newCity.country = response.data.list[i].sys.country;
+					newCity._id = response.data.list[i].id;
+					CityFromResponse.push(newCity);
+				}
 				// match location 
 				// show options 
 				// clear old selected options
@@ -90,8 +97,9 @@ angular.module('WeatherDashboard').controller('EditWeatherController', function(
 				controller.alertMessage = 'Please enter a valid City';
 				controller.showAlert = true;	
 				controller.ShowExtraOptions = false;	
-			}			
+			}	
 		});
+		
 	};	
 
 });
