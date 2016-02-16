@@ -48,8 +48,6 @@ gulp.task('copy-html', function(){
 gulp.task('copy-images', function(){
 	gulp.src('images/**/*')
 	.pipe(gulp.dest('dist/images'));
-	gulp.src('javascript/app-data/city.list.json')
-	.pipe(gulp.dest('dist/javascript/app-data'));
 });
 
 gulp.task('styles', function () {
